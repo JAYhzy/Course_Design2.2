@@ -14,8 +14,10 @@
 
 import Operation.*;
 //import Operation.studentChange;
+import student.StudentDao;
 import student.StudentList;
 
+import java.sql.Connection;
 import java.util.Scanner;
 import Operation.ioOPerate;
 public class Main {
@@ -30,6 +32,9 @@ public class Main {
         System.out.println("=========================");
     }
     public static void main(String[] args) throws Exception {
+        Connection connection = new util.jdbc_util().getCon();
+        StudentDao studentDao = new StudentDao();
+
         StudentList studentList = new StudentList();
         ioOPerate[] ioOperation = new ioOPerate[] {  // 对接口数组进行赋值，分别指向不同的实例化操作对象，利用下标对不同对象进行操作
                 new AddStudent(),
@@ -46,7 +51,7 @@ public class Main {
             Scanner sc  = new Scanner(System.in);
             int choice = sc.nextInt();
             // 多态 根据当前接口对象ioOperation的不同引用来进行不同的操作
-            ioOperation[choice].work(studentList);
+            ioOperation[choice].work(connection, studentDao);
         }while(true);
     }
 }

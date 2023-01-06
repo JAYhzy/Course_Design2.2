@@ -34,21 +34,36 @@ public class Student {
         this.grade = new double[]{discrete_MathGrade, system_ProgrammingGrade, englishGrade, dataStructureGrade, computer_NetworkGrade, artsGrade};
 
     }
-    @Override
-    public String toString() {
+
+    public String toString2() {
         return "Student{" +
                 "studentId=" + studentId +
                 ", name='" + name + "}\t";
 
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + '\'' +
+                ", Discrete_MathGrade=" + Discrete_MathGrade +
+                ", System_ProgrammingGrade=" + System_ProgrammingGrade +
+                ", EnglishGrade=" + EnglishGrade +
+                ", DataStructureGrade=" + DataStructureGrade +
+                ", Computer_NetworkGrade=" + Computer_NetworkGrade +
+                ", ArtsGrade=" + ArtsGrade +
+                ", average=" + average +
+                ", frequency=" + frequency +
+                '}'+ "\n";
+    }
     public double getAverage() {
         double average=0;
         average = (getDiscrete_MathGrade() + getEnglishGrade() +getSystem_ProgrammingGrade()+getComputer_NetworkGrade()+getArtsGrade()+getDataStructureGrade() )/6;
         return average;
     }
 
-    public int getFrequency() {return frequency;}
+    public int getFrequency() {return util.util.judgeFlunk(this);}
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;

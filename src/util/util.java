@@ -1,6 +1,7 @@
 package util;
 
 import student.Student;
+import student.StudentDao;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,14 @@ public class util {
             res.add(demo);
             count++;
         }
+        return res;
+    }
+    public static int judgeFlunk(Student student)
+    {
+        int res = 0;
+        for (double grade : student.grade)
+            if (grade < 60)
+                res++;
         return res;
     }
 }

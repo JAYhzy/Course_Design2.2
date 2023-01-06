@@ -10,9 +10,8 @@ import java.util.Scanner;
 
 public class AddStudent implements ioOPerate{
     @Override
-    public void work(StudentList studentList) throws Exception {
+    public void work(Connection connection, StudentDao studentDao) throws Exception {
         jdbc_util jdbcUtil = new jdbc_util();
-        Connection connection =  jdbcUtil.getCon();
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the student number of the student you want to add:");
@@ -33,8 +32,7 @@ public class AddStudent implements ioOPerate{
         double ArtsGrade = sc.nextDouble();
 
         Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade,0,0);
-        StudentDao studentdao = new StudentDao();
-        if (studentdao.AddStudent(connection, student))
+        if (studentDao.AddStudent(connection, student))
             System.out.println("successfully!");
         else System.out.println("false");
     }
