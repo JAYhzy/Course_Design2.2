@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+public class StudentDao {
     /**
      * 创建表
      * @param conn
@@ -38,6 +39,7 @@ import java.sql.SQLException;
         preparedStatement.close();
     }
 
+    public boolean AddStudent(Connection connection, Student student) throws SQLException {
         //language=MariaDB
         String sql = "insert into grade values(null, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
