@@ -13,7 +13,7 @@ public class Student {
     private double Computer_NetworkGrade;
     private double ArtsGrade;
     private double average;
-    private double frequency = 0;
+    private int frequency = 0;
     public Student(long studentId, String name, double discrete_MathGrade,
                    double system_ProgrammingGrade, double englishGrade,
                    double dataStructureGrade, double computer_NetworkGrade, double artsGrade) {
@@ -32,11 +32,9 @@ public class Student {
         return average;
     }
 
-    public double getFrequency() {
-        return frequency;
-    }
+    public int getFrequency() {return frequency;}
 
-    public void setFrequency(double frequency) {
+    public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
 
