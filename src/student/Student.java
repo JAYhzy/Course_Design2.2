@@ -13,10 +13,10 @@ public class Student {
     private double Computer_NetworkGrade;
     private double ArtsGrade;
     private double average;
-    private double frequency = 0;
+    private int frequency = 0;
     public Student(long studentId, String name, double discrete_MathGrade,
                    double system_ProgrammingGrade, double englishGrade,
-                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade) {
+                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade, double average, int frequency) {
         this.studentId = studentId;
         this.name = name;
         Discrete_MathGrade = discrete_MathGrade;
@@ -36,7 +36,7 @@ public class Student {
         return frequency;
     }
 
-    public void setFrequency(double frequency) {
+    public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
 

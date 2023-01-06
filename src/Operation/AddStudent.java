@@ -30,7 +30,7 @@ public class AddStudent implements ioOPerate{
         System.out.println("Please enter the grade of the Arts you want to add:");
         double ArtsGrade = sc.nextDouble();
 
-        Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade);
+        Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade );
         studentList.setStudent(studentList.getUsedSize(), student);
         studentList.setUsedSize(studentList.getUsedSize() + 1);
         System.out.println("Added successfully!");
