@@ -32,4 +32,10 @@ public class util {
                 res++;
         return res;
     }
+    public static double getAverage(Student student) {
+        double average=0;
+        for (double grade : student.grade)
+            average += grade;
+        return average / 6;
+    }
 }

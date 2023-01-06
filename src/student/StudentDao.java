@@ -79,9 +79,7 @@ public class StudentDao {
             double DataStructure    = resultSet.getDouble("DataStructure");
             double Computer_Network = resultSet.getDouble("Computer_Network");
             double Arts = resultSet.getDouble("Arts");
-            double average  = resultSet.getDouble("average");
-	        int frequency    = resultSet.getInt("frequency");
-            students.add(new Student(studentId, name, Discrete_Math, System_Programming, English, DataStructure, Computer_Network, Arts, average, frequency));
+            students.add(new Student(studentId, name, Discrete_Math, System_Programming, English, DataStructure, Computer_Network, Arts));
         }
         resultSet.close();
         preparedStatement.close();

@@ -20,7 +20,7 @@ public class Student {
     private int frequency = 0;
     public Student(long studentId, String name, double discrete_MathGrade,
                    double system_ProgrammingGrade, double englishGrade,
-                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade,double average,int frequency) {
+                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade) {
         this.studentId = studentId;
         this.name = name;
         Discrete_MathGrade = discrete_MathGrade;
@@ -29,41 +29,15 @@ public class Student {
         DataStructureGrade = dataStructureGrade;
         Computer_NetworkGrade = computer_NetworkGrade;
         ArtsGrade = artsGrade;
-        this.average = average;
-        this.frequency = frequency;
         this.grade = new double[]{discrete_MathGrade, system_ProgrammingGrade, englishGrade, dataStructureGrade, computer_NetworkGrade, artsGrade};
-
+        this.average = util.util.getAverage(this);
+        this.frequency = util.util.judgeFlunk(this);
     }
 
-    public String toString2() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", name='" + name + "}\t";
 
-    }
+    public double getAverage() {return average;}
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", name='" + name + '\'' +
-                ", Discrete_MathGrade=" + Discrete_MathGrade +
-                ", System_ProgrammingGrade=" + System_ProgrammingGrade +
-                ", EnglishGrade=" + EnglishGrade +
-                ", DataStructureGrade=" + DataStructureGrade +
-                ", Computer_NetworkGrade=" + Computer_NetworkGrade +
-                ", ArtsGrade=" + ArtsGrade +
-                ", average=" + average +
-                ", frequency=" + frequency +
-                '}'+ "\n";
-    }
-    public double getAverage() {
-        double average=0;
-        average = (getDiscrete_MathGrade() + getEnglishGrade() +getSystem_ProgrammingGrade()+getComputer_NetworkGrade()+getArtsGrade()+getDataStructureGrade() )/6;
-        return average;
-    }
-
-    public int getFrequency() {return util.util.judgeFlunk(this);}
+    public int getFrequency() {return frequency;}
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
@@ -135,6 +109,29 @@ public class Student {
 
     public void setArtsGrade(double artsGrade) {
         ArtsGrade = artsGrade;
+    }
+
+    public String toString2() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + "}\t";
+
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + '\'' +
+                ", Discrete_MathGrade=" + Discrete_MathGrade +
+                ", System_ProgrammingGrade=" + System_ProgrammingGrade +
+                ", EnglishGrade=" + EnglishGrade +
+                ", DataStructureGrade=" + DataStructureGrade +
+                ", Computer_NetworkGrade=" + Computer_NetworkGrade +
+                ", ArtsGrade=" + ArtsGrade +
+                ", average=" + average +
+                ", frequency=" + frequency +
+                '}'+ "\n";
     }
 }
 
