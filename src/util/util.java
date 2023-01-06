@@ -9,6 +9,6 @@ public class util {
     {
         //对象为每一个科目不及格的学生集合
         ArrayList<ArrayList<Student>> res = new ArrayList<>();
-    return  res;
+        return res;
     }
 }
