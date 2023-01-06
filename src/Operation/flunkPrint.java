@@ -1,55 +1,62 @@
 package Operation;
 
 import student.Student;
+import student.StudentDao;
 import student.StudentList;
 
-import java.util.Arrays;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 // 对不及格学生的打印
 public class flunkPrint implements ioOPerate {
     @Override
-    public void work(StudentList studentList) {
+    public void work(StudentList studentList) throws Exception {
+        Connection connection = new util.jdbc_util().getCon();
+        StudentDao studentDao = new StudentDao();
+        ArrayList<ArrayList<Student>> students = util.util.judgeStandard(studentDao.findStudent(connection));
+        System.out.println("----------------------------------------");
+
         System.out.println("Fail Discrete Mathematics:");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            if (studentList.getStudents()[i].getDiscrete_MathGrade() < 60) {
-                System.out.println(studentList.getStudents()[i].getStudentId() + studentList.getStudents()[i].getName());
-                studentList.getStudents()[i].setFrequency( (studentList.getStudents()[i].getFrequency())+1);
-            }
-        }
+        if (students.get(0).size() != 0)
+            for (Student student: students.get(0))
+                System.out.println(student + "Mathematics:" + student.grade[0]);
+        else
+            System.out.println("All Pass");
+
         System.out.println("Fail System ProgrammingGrade:");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            if (studentList.getStudents()[i].getSystem_ProgrammingGrade() < 60) {
-                System.out.println(studentList.getStudents()[i].getStudentId() + studentList.getStudents()[i].getName());
-                studentList.getStudents()[i].setFrequency( (studentList.getStudents()[i].getFrequency())+1);
-            }
-        }
+        if (students.get(1).size() != 0)
+            for (Student student: students.get(1))
+                System.out.println(student + "ProgrammingGrade:" + student.grade[1]);
+        else
+            System.out.println("All Pass");
+
         System.out.println("Fail English:");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            if (studentList.getStudents()[i].getEnglishGrade() < 60) {
-                System.out.println(studentList.getStudents()[i].getStudentId() + studentList.getStudents()[i].getName());
-                studentList.getStudents()[i].setFrequency( (studentList.getStudents()[i].getFrequency())+1);
-            }
-        }
+        if (students.get(2).size() != 0)
+            for (Student student: students.get(2))
+                System.out.println(student + "English:" + student.grade[2]);
+        else
+            System.out.println("All Pass");
+
         System.out.println("Fail DataStructure:");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            if (studentList.getStudents()[i].getDataStructureGrade() < 60) {
-                System.out.println(studentList.getStudents()[i].getStudentId() + studentList.getStudents()[i].getName());
-                studentList.getStudents()[i].setFrequency( (studentList.getStudents()[i].getFrequency())+1);
-            }
-        }
+        if (students.get(3).size() != 0)
+            for (Student student: students.get(3))
+                System.out.println(student + "DataStructure:" + student.grade[3]);
+        else
+            System.out.println("All Pass");
+
         System.out.println("Fail Computer NetworkGrade:");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            if (studentList.getStudents()[i].getComputer_NetworkGrade() < 60) {
-                System.out.println(studentList.getStudents()[i].getStudentId() + studentList.getStudents()[i].getName());
-                studentList.getStudents()[i].setFrequency( (studentList.getStudents()[i].getFrequency())+1);
-            }
-        }
+        if (students.get(4).size() != 0)
+            for (Student student: students.get(4))
+                System.out.println(student + "NetworkGrade:" + student.grade[4]);
+        else
+            System.out.println("All Pass");
+
         System.out.println("Fail Arts:");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            if (studentList.getStudents()[i].getArtsGrade() < 60) {
-                System.out.println(studentList.getStudents()[i].getStudentId() + studentList.getStudents()[i].getName());
-                studentList.getStudents()[i].setFrequency( (studentList.getStudents()[i].getFrequency())+1);
-            }
-        }
+        if (students.get(5).size() != 0)
+            for (Student student: students.get(5))
+                System.out.println(student + "Arts:" + student.grade[5]);
+        else
+            System.out.println("All Pass");
+        System.out.println("----------------------------------------");
     }
 }

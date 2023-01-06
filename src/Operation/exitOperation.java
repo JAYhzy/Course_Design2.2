@@ -3,14 +3,16 @@ package Operation;
 import student.Student;
 import student.StudentList;
 
-public class exitOperation implements ioOPerate{
+import java.util.Scanner;
+
+public class exitOperation implements ioOPerate {
     @Override
     public void work(StudentList studentList) {
-        System.out.println("exit");
-        for (int i = 0; i < studentList.getUsedSize(); i++) {
-            studentList.setStudent(i, null);
+        System.out.println("whether to exit?" + "(Y/N)");
+        Scanner scan = new Scanner(System.in);
+        if (scan.next().equalsIgnoreCase("Y")) {
+            System.out.println("exit!");
+            System.exit(0);
         }
-        System.out.println("exit successfully!");
-        System.exit(0);
     }
 }

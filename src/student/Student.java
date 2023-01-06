@@ -6,6 +6,7 @@ package student;
 public class Student {
     private long studentId;
     private String name;
+    public double[] grade= null;
     private double Discrete_MathGrade;
     private double System_ProgrammingGrade;
     private double EnglishGrade;
@@ -27,6 +28,13 @@ public class Student {
         ArtsGrade = artsGrade;
         this.average = average;
         this.frequency = frequency;
+        this.grade = new double[]{discrete_MathGrade, system_ProgrammingGrade, englishGrade, dataStructureGrade, computer_NetworkGrade, artsGrade};
+    }
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + "}\t";
     }
 
     public double getAverage() {

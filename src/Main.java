@@ -19,7 +19,7 @@ import student.StudentList;
 import java.util.Scanner;
 import Operation.ioOPerate;
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void menu() {
         System.out.println("0.Add student information.");
         System.out.println("1.Print student information.");
         System.out.println("2.How many all students fail to some exam.");
@@ -28,8 +28,9 @@ public class Main {
         System.out.println("5.How many exams a student fails averagely to.");
         System.out.println("6.exit");
         System.out.println("=========================");
+    }
+    public static void main(String[] args) throws Exception {
         StudentList studentList = new StudentList();
-
         ioOPerate[] ioOperation = new ioOPerate[] {  // 对接口数组进行赋值，分别指向不同的实例化操作对象，利用下标对不同对象进行操作
                 new AddStudent(),
                 new printAll(),
@@ -39,12 +40,13 @@ public class Main {
                 new studentflunkaverage(),
                 new exitOperation(),
         };
-        while (true) {
+        do {
+            menu();
             System.out.print("Please enter you choice:");
             Scanner sc  = new Scanner(System.in);
             int choice = sc.nextInt();
             // 多态 根据当前接口对象ioOperation的不同引用来进行不同的操作
             ioOperation[choice].work(studentList);
-        }
+        }while(true);
     }
 }

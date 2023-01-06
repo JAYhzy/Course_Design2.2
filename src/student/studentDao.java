@@ -57,7 +57,7 @@ public class StudentDao {
         preparedStatement.setDouble(7, student.getComputer_NetworkGrade());
         preparedStatement.setDouble(8, student.getArtsGrade());
         preparedStatement.setDouble(9, student.getAverage());
-        preparedStatement.setInt(9, student.getFrequency());
+        preparedStatement.setInt(10, student.getFrequency());
         int n = preparedStatement.executeUpdate();
         return n == 1;
     }

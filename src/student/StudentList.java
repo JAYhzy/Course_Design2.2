@@ -2,35 +2,27 @@
  * 里面存放了一群学生的信息，是学生对象的一个集合，我们对学生系统的操作主要围绕这个StudentList类来展开
  */
 package student;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentList {
-    private int usedSize;
-    public int getUsedSize() {
-        return usedSize;
-    }
+        public ArrayList<Student> students=new ArrayList<>();
+        public StudentList() {}
+        public ArrayList<Student> getStudents(){return students;}
+        public void setStudent (int pos,Student student){
+            students.set(pos,student);
+        }
+        public Student getBook(int pos){
+            return students.get(pos);
+        }
 
-    public void setUsedSize(int usedSize) {
-        this.usedSize = usedSize;
-    }
 
-    public Student[] getStudents() {return students;}
 
-    // 打印指定下标的学生对象
-    public void printStudent(int pos) {System.out.println(students[pos]);}
 
-    // 获取指定下标的图书
-    public Student getStudent(int pos) {
-        return students[pos];
-    }
 
-    // 在数组的指定位置放置图书
-    public void setStudent(int pos, Student student) {
-        students[pos] = student;
-    }
 
-    // 初始化学生数组
-    private Student[] students = new Student[10];
-    public StudentList() {}
+
+
+
 }
 
