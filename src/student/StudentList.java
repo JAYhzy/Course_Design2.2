@@ -14,14 +14,10 @@ public class StudentList {
         this.usedSize = usedSize;
     }
 
-    public Student[] getStudents() {
-        return students;
-    }
+    public Student[] getStudents() {return students;}
 
     // 打印指定下标的学生对象
-    public void printStudent(int pos) {
-        System.out.println(students[pos]);
-    }
+    public void printStudent(int pos) {System.out.println(students[pos]);}
 
     // 获取指定下标的图书
     public Student getStudent(int pos) {
@@ -35,11 +31,6 @@ public class StudentList {
 
     // 初始化学生数组
     private Student[] students = new Student[10];
-    public StudentList() {
-        students[0] = new Student(9370118, "qw", 76, 92,89,8,78,67);
-        students[1] = new Student(9370119, "as", 43, 67,67,43,98,56);
-        students[2] = new Student(9370120, "zx", 23, 99,67,87,54,34);
-        usedSize = 3;
-    }
+    public StudentList() {}
 }
 

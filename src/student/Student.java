@@ -25,16 +25,17 @@ public class Student {
         DataStructureGrade = dataStructureGrade;
         Computer_NetworkGrade = computer_NetworkGrade;
         ArtsGrade = artsGrade;
+        this.average = average;
+        this.frequency = frequency;
     }
+
     public double getAverage() {
         double average=0;
         average = (getDiscrete_MathGrade() + getEnglishGrade() +getSystem_ProgrammingGrade()+getComputer_NetworkGrade()+getArtsGrade()+getDataStructureGrade() )/6;
         return average;
     }
 
-    public double getFrequency() {
-        return frequency;
-    }
+    public int getFrequency() {return frequency;}
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
