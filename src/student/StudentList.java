@@ -15,14 +15,5 @@ public class StudentList {
         public Student getBook(int pos){
             return students.get(pos);
         }
-
-
-
-
-
-
-
-
-
 }
 

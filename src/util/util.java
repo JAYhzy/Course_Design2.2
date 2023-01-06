@@ -25,6 +25,7 @@ public class util {
     }
     public static int judgeFlunk(Student student)
     {
+        //计算不及格科目数
         int res = 0;
         for (double grade : student.grade)
             if (grade < 60)

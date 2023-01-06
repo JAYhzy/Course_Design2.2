@@ -34,7 +34,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Connection connection = new util.jdbc_util().getCon();
         StudentDao studentDao = new StudentDao();
-
+        studentDao.createTable(connection);
+        
         StudentList studentList = new StudentList();
         ioOPerate[] ioOperation = new ioOPerate[] {  // 对接口数组进行赋值，分别指向不同的实例化操作对象，利用下标对不同对象进行操作
                 new AddStudent(),

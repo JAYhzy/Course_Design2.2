@@ -19,7 +19,7 @@ public class studentflunkaverage implements ioOPerate{
             total += student.getFrequency();
 
         System.out.println("How many exams a student fails averagely to:");
-        System.out.println(total/students.size());
+        System.out.println(total*1.0/students.size());
     }
 
 }
