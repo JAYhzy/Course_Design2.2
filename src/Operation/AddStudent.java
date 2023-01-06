@@ -31,9 +31,10 @@ public class AddStudent implements ioOPerate{
         double Computer_NetworkGrade = sc.nextDouble();
         System.out.println("Please enter the grade of the Arts you want to add:");
         double ArtsGrade = sc.nextDouble();
+
         Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade);
         Studentdao studentdao = new Studentdao();
-        if (studentdao.addBook(connection, student))
+        if (studentdao.addStudent(connection, student))
             System.out.println("successfully!");
         else System.out.println("false");
     }

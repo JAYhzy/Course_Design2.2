@@ -16,7 +16,7 @@ public class Student {
     private int frequency = 0;
     public Student(long studentId, String name, double discrete_MathGrade,
                    double system_ProgrammingGrade, double englishGrade,
-                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade, double average, int frequency) {
+                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade) {
         this.studentId = studentId;
         this.name = name;
         Discrete_MathGrade = discrete_MathGrade;
@@ -25,7 +25,9 @@ public class Student {
         DataStructureGrade = dataStructureGrade;
         Computer_NetworkGrade = computer_NetworkGrade;
         ArtsGrade = artsGrade;
+
     }
+
     public double getAverage() {
         double average=0;
         average = (getDiscrete_MathGrade() + getEnglishGrade() +getSystem_ProgrammingGrade()+getComputer_NetworkGrade()+getArtsGrade()+getDataStructureGrade() )/6;
