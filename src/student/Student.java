@@ -16,7 +16,7 @@ public class Student {
     private int frequency = 0;
     public Student(long studentId, String name, double discrete_MathGrade,
                    double system_ProgrammingGrade, double englishGrade,
-                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade, double average, int frequency) {
+                   double dataStructureGrade, double computer_NetworkGrade, double artsGrade,double average,int frequency) {
         this.studentId = studentId;
         this.name = name;
         Discrete_MathGrade = discrete_MathGrade;

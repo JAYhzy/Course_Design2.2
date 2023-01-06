@@ -1,8 +1,8 @@
 package Operation;
 
 import student.Student;
-import student.StudentDao;
 import student.StudentList;
+import student.StudentDao;
 import util.jdbc_util;
 
 import java.sql.Connection;
@@ -32,7 +32,7 @@ public class AddStudent implements ioOPerate{
         System.out.println("Please enter the grade of the Arts you want to add:");
         double ArtsGrade = sc.nextDouble();
 
-        Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade, 0, 0);
+        Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade,0,0);
         StudentDao studentdao = new StudentDao();
         if (studentdao.AddStudent(connection, student))
             System.out.println("successfully!");

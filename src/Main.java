@@ -19,7 +19,7 @@ import student.StudentList;
 import java.util.Scanner;
 import Operation.ioOPerate;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("0.Add student information.");
         System.out.println("1.Print student information.");
         System.out.println("2.How many all students fail to some exam.");
