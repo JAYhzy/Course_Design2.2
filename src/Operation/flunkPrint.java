@@ -15,14 +15,14 @@ public class flunkPrint implements ioOPerate {
         StudentDao studentDao = new StudentDao();
         ArrayList<ArrayList<Student>> students = util.util.judgeStandard(studentDao.findStudent(connection));
 
-        System.out.println("----------------------------");
+        System.out.println("----------------------------------------");
+
         System.out.println("Fail Discrete Mathematics:");
         if (students.get(0).size() != 0)
             for (Student student: students.get(0))
                 System.out.println(student + "Mathematics:" + student.grade[0]);
         else
             System.out.println("All Pass");
-
 
         System.out.println("Fail System ProgrammingGrade:");
         if (students.get(1).size() != 0)
@@ -58,7 +58,7 @@ public class flunkPrint implements ioOPerate {
                 System.out.println(student + "Arts:" + student.grade[5]);
         else
             System.out.println("All Pass");
-        System.out.println("----------------------------");
 
+        System.out.println("----------------------------------------");
     }
 }

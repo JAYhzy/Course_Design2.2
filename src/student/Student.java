@@ -6,12 +6,6 @@ package student;
 import java.util.Arrays;
 
 public class Student {
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", name='" + name + "}\t";
-    }
 
     private long studentId;
     private String name;
@@ -38,6 +32,14 @@ public class Student {
         this.average = average;
         this.frequency = frequency;
         this.grade = new double[]{discrete_MathGrade, system_ProgrammingGrade, englishGrade, dataStructureGrade, computer_NetworkGrade, artsGrade};
+
+    }
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + "}\t";
+
     }
 
     public double getAverage() {
