@@ -59,24 +59,6 @@ public class StudentDao {
         return n == 1;
     }
 
-    public boolean getDiscrete_Math(Connection connection, Student student) throws SQLException {
-        //language=MariaDB
-        String sql = "select * from grade";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-        preparedStatement.setInt(1, (int) student.getStudentId());
-        preparedStatement.setString(2, student.getName());
-        preparedStatement.setDouble(3, student.getDiscrete_MathGrade());
-        preparedStatement.setDouble(4, student .getSystem_ProgrammingGrade());
-        preparedStatement.setDouble(5, student.getEnglishGrade());
-        preparedStatement.setDouble(6, student.getDataStructureGrade());
-        preparedStatement.setDouble(7, student.getComputer_NetworkGrade());
-        preparedStatement.setDouble(8, student.getArtsGrade());
-        preparedStatement.setDouble(9, student.getAverage());
-        preparedStatement.setInt(9, student.getFrequency());
-        int n = preparedStatement.executeUpdate();
-        return n == 1;
-    }
 
 
 
