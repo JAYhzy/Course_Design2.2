@@ -18,7 +18,6 @@ public class jdbc_util
 	/**
 	 * 获取数据库连接	
 	 * @return 一个connection连接对象
-	 * @throws Exception
 	 */
 	public Connection getCon() throws Exception 
 	{
@@ -40,8 +39,6 @@ public class jdbc_util
 	
 	/**
 	 * 关闭数据库连接
-	 * @param con
-	 * @throws Exception
 	 */
 	public void closeCon(Connection con)throws Exception{
 		if (con != null) {

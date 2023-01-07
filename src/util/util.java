@@ -3,6 +3,8 @@ package util;
 import student.Student;
 import student.StudentDao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class util {
@@ -10,7 +12,7 @@ public class util {
     {
         //对象为每一个科目不及格的学生集合
         ArrayList<ArrayList<Student>> res = new ArrayList<>();
-        ArrayList<Student> demo = null;
+        ArrayList<Student> demo;
         int count = 0;
         while (count < 6)
         {
@@ -37,5 +39,10 @@ public class util {
         for (double grade : student.grade)
             average += grade;
         return average / 6;
+    }
+
+    public static void updateInformationNew(Connection connection, Student student) throws SQLException {
+        StudentDao studentDao = new StudentDao();
+        studentDao.update(connection, student);
     }
 }

@@ -11,8 +11,6 @@ public class StudentDao {
 
     /**
      * 创建表
-     * @param conn
-     * @throws Exception
      */
     public void createTable(Connection conn) throws Exception {
         String sql = """
@@ -61,9 +59,21 @@ public class StudentDao {
         int n = preparedStatement.executeUpdate();
         return n == 1;
     }
+
+    public void update(Connection connection, Student student) throws SQLException {
+        //language=MariaDB
+        String sql = "update grade set average = ? , frequency = ? where studentid = ?;";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setDouble(1, student.getAverage());
+        preparedStatement.setInt(2, student.getFrequency());
+        preparedStatement.setInt(3, (int) student.getStudentId());
+    }
+
     public ArrayList<Student> findStudent(Connection connection) throws SQLException {
         ArrayList<Student> students = new ArrayList<>();
         String sql = "select * from grade;";
+        Student student;
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -79,7 +89,14 @@ public class StudentDao {
             double DataStructure    = resultSet.getDouble("DataStructure");
             double Computer_Network = resultSet.getDouble("Computer_Network");
             double Arts = resultSet.getDouble("Arts");
-            students.add(new Student(studentId, name, Discrete_Math, System_Programming, English, DataStructure, Computer_Network, Arts));
+            student = new Student(studentId, name, Discrete_Math, System_Programming, English, DataStructure, Computer_Network, Arts);
+
+            //此处判断如果数据库中average 或者 frequency为空就update一下给她添加进去
+            if (resultSet.getString("average") == null)
+                util.util.updateInformationNew(connection, student);
+            if (resultSet.getString("frequency") == null)
+                util.util.updateInformationNew(connection, student);
+            students.add(student);
         }
         resultSet.close();
         preparedStatement.close();
