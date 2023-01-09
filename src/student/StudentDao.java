@@ -94,7 +94,11 @@ public class StudentDao {
             //此处判断如果数据库中average 或者 frequency为空就update一下给她添加进去
             if (resultSet.getString("average") == null)
                 util.util.updateInformationNew(connection, student);
+            else if (!resultSet.getString("average").equals(String.valueOf(student.getAverage())))
+                util.util.updateInformationNew(connection, student);
             if (resultSet.getString("frequency") == null)
+                util.util.updateInformationNew(connection, student);
+            else if (!resultSet.getString("frequency").equals(String.valueOf(student.getFrequency())))
                 util.util.updateInformationNew(connection, student);
             students.add(student);
         }
