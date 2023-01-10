@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class StudentDao {
 
     /**
-     * åˆ›å»ºè¡¨
+     * ´´½¨±í
      */
     public void createTable(Connection conn) throws Exception {
         String sql = """
@@ -24,7 +24,7 @@ public class StudentDao {
                 	`DataStructure` INT(11) NULL DEFAULT NULL,
                 	`Computer_Network` INT(11) NULL DEFAULT NULL,
                 	`Arts` INT(11) NULL DEFAULT NULL,
-                	`average` INT(11) NULL DEFAULT NULL,
+                	`average` DOUBLE(11, 2) NULL DEFAULT NULL,
                 	`frequency` INT(11) NULL DEFAULT NULL,
                 	INDEX `id` (`id`)
                 )
@@ -36,7 +36,7 @@ public class StudentDao {
         if (preparedStatement.executeUpdate() > 0) {
             System.out.println("successfully!");
         }
-        //é‡Šæ”¾èµ„æº
+        //ÊÍ·Å×ÊÔ´
         preparedStatement.close();
     }
 
@@ -59,15 +59,20 @@ public class StudentDao {
         int n = preparedStatement.executeUpdate();
         return n == 1;
     }
-
-    public void update(Connection connection, Student student) throws SQLException {
+    //ÕâÀïĞŞ¸ÄÁËÒ»ÏÂ
+    public boolean update(Connection connection, Student student) throws SQLException {
         //language=MariaDB
-        String sql = "update grade set average = ? , frequency = ? where studentid = ?;";
+        String sql = "update grade set average = ? , frequency = ? where studentid = ? and name = ?;";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setDouble(1, student.getAverage());
         preparedStatement.setInt(2, student.getFrequency());
         preparedStatement.setInt(3, (int) student.getStudentId());
+        preparedStatement.setString(4, student.getName());
+
+        boolean b = preparedStatement.executeUpdate() == 1;
+        preparedStatement.close();
+        return b;
     }
 
     public ArrayList<Student> findStudent(Connection connection) throws SQLException {
@@ -91,10 +96,11 @@ public class StudentDao {
             double Arts = resultSet.getDouble("Arts");
             student = new Student(studentId, name, Discrete_Math, System_Programming, English, DataStructure, Computer_Network, Arts);
 
-            //æ­¤å¤„åˆ¤æ–­å¦‚æœæ•°æ®åº“ä¸­average æˆ–è€… frequencyä¸ºç©ºå°±updateä¸€ä¸‹ç»™å¥¹æ·»åŠ è¿›å»
-            if (resultSet.getString("average") == null)
+            //´Ë´¦ÅĞ¶ÏÈç¹ûÊı¾İ¿âÖĞaverage »òÕß frequencyÎª¿Õ¾ÍupdateÒ»ÏÂ¸øËıÌí¼Ó½øÈ¥
+            if (resultSet.getString("average") == null || resultSet.getString("frequency") == null)
+
                 util.util.updateInformationNew(connection, student);
-            if (resultSet.getString("frequency") == null)
+            else if (!resultSet.getString("average").equals(String.valueOf(student.getAverage())) || !resultSet.getString("frequency").equals(String.valueOf(student.getFrequency())))
                 util.util.updateInformationNew(connection, student);
             students.add(student);
         }

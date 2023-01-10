@@ -22,6 +22,7 @@ import java.util.Scanner;
 import Operation.ioOPerate;
 public class Main {
     public static void menu() {
+        System.out.println("=========================");
         System.out.println("0.Add student information.");
         System.out.println("1.Print student information.");
         System.out.println("2.How many all students fail to some exam.");
@@ -36,7 +37,6 @@ public class Main {
         StudentDao studentDao = new StudentDao();
         studentDao.createTable(connection);
         
-        StudentList studentList = new StudentList();
         ioOPerate[] ioOperation = new ioOPerate[] {  // 对接口数组进行赋值，分别指向不同的实例化操作对象，利用下标对不同对象进行操作
                 new AddStudent(),
                 new printAll(),

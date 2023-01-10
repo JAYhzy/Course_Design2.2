@@ -43,6 +43,29 @@ public class util {
 
     public static void updateInformationNew(Connection connection, Student student) throws SQLException {
         StudentDao studentDao = new StudentDao();
-        studentDao.update(connection, student);
+        boolean update = studentDao.update(connection, student);
+        if (!update)
+            System.out.println("更新失败");
+    }
+
+    /**
+     * 此方法用于判断用户的名字和id是否重复
+     * @param connection
+     * @param student
+     * @return
+     */
+    public static boolean judgementSoleByUserId(Connection connection, Student student)
+    {
+        StudentDao studentDao = new StudentDao();
+        try {
+            ArrayList<Student> students = studentDao.findStudent(connection);
+
+            for (Student student1 : students)
+                if (student1.getStudentId() == student.getStudentId() || student1.getName().equals(student.getName()))
+                    return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 }

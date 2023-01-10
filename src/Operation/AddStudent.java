@@ -31,10 +31,11 @@ public class AddStudent implements ioOPerate{
         System.out.println("Please enter the grade of the Arts you want to add:");
         double ArtsGrade = sc.nextDouble();
 
+        //此处使用了方法判断是否有重复
         Student student = new Student(studentId, name, Discrete_MathGrade, System_ProgrammingGrade,EnglishGrade,DataStructureGrade,Computer_NetworkGrade, ArtsGrade);
-        if (studentDao.AddStudent(connection, student))
+        if (util.util.judgementSoleByUserId(connection, student) && studentDao.AddStudent(connection, student))
             System.out.println("successfully!");
-        else System.out.println("false");
+        else System.out.println("Name or UserId is exists!");
     }
 }
 
